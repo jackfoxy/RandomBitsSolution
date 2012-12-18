@@ -24,7 +24,7 @@ let ``first bit true`` () =
 [<Test>]
 let ``Seq length of less than 1 fails`` () =
     let x = new RandomBits("a800000000000000")
-    (fun () -> (List.ofSeq (x.RndBoolSeq 0)) |> ignore) |> should throw typeof<System.Exception>
+    (fun () -> (List.ofSeq (x.RndBoolSeq 0)) |> ignore) |> should throw typeof<System.ArgumentException>
 
 [<Test>]
 let ``Seq of 64 consumes 1 64-bit cache block`` () =

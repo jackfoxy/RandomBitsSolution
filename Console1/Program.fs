@@ -11,18 +11,18 @@ module console1 =
 
 
 
-        let rec loop (acc : Map<sbyte, int>) dec =
-            match dec with
-            | 0 -> acc
-            | _ -> 
-                let n = x.RndByte (0y, 10y)
-                if (acc.ContainsKey n) then 
-                    let count = acc.Item n
-                    let m = acc.Remove n
-                    loop (m.Add (n, (count + 1))) (dec - 1)
-                else loop (acc.Add (n, 1)) (dec - 1)
-            
-        Map.iter (fun k t -> printfn "%A %i" k t ) (loop Map.empty 100000)
+//        let rec loop (acc : Map<sbyte, int>) dec =
+//            match dec with
+//            | 0 -> acc
+//            | _ -> 
+//                let n = x.RndSByte (0y, 10y)
+//                if (acc.ContainsKey n) then 
+//                    let count = acc.Item n
+//                    let m = acc.Remove n
+//                    loop (m.Add (n, (count + 1))) (dec - 1)
+//                else loop (acc.Add (n, 1)) (dec - 1)
+//            
+//        Map.iter (fun k t -> printfn "%A %i" k t ) (loop Map.empty 100000)
 
         
 //        let seq2 = x.RndBoolSeq 3
@@ -56,106 +56,165 @@ module console1 =
 //        printfn "%A" (x.RndBool())
 //        printfn ""
 
-
-//        printfn "%A %s" (x.RndByte (-128y, 127y)) "RndByte  6"
-//        printfn "%A" (x.RndByte (-128y, 127y))
-//        printfn "%A" (x.RndByte (-128y, 127y))
-//        printfn "%A" (x.RndByte (-128y, 127y))
-//        printfn "%A" (x.RndByte (-128y, 127y))
-//        printfn "%A" (x.RndByte (-128y, 127y))
-//        printfn "%A" (x.RndByte (-128y, 127y))
-//        printfn "%A" (x.RndByte (-128y, 127y))
-//        printfn "%A" (x.RndByte (-128y, 127y))
-//        printfn "%A" (x.RndByte (-128y, 127y))
-//        printfn "%A" (x.RndByte (-128y, 127y))
-//        printfn "%A" (x.RndByte (-128y, 127y))
-
-//        printfn "%A %s" (x.RndUbyteUniqueSeq (2uy, 12uy, 10) ) "RndByte  6"
-
-//        printfn "%A %s" (x.RndByteSeq (-1y, -2y, 2) ) "RndByte  6"
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-//        printfn "%A" (x.RndByteSeq (-12y, -2y, 2))
-
-//        let seq2 = x.RndUbyteSeq 3
-//        printfn "%A %s" seq2 "rndUbyteSeq"
-//        printfn "%A" (Seq.length seq2)
+        printfn "%A %s " (x.RndSByte (System.SByte.MinValue, System.SByte.MaxValue)) "RndSByte  4"
+        printfn "%A " (x.RndSByte (1y, 5y))
+        printfn "%A " (x.RndSByte (-1y, 3y))
+        printfn ""
+        printfn "%A %s " (x.RndInt16 (System.Int16.MinValue, System.Int16.MaxValue)) "RndInt16"
+        printfn "%A " (x.RndInt16 (1s, 5s))
+        printfn "%A " (x.RndInt16 (-1s, 3s))
+        printfn ""
+        printfn "%A %s " (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue)) "RndInt32"
+        printfn "%A " (x.RndInt32 (1, 5))
+        printfn "%A " (x.RndInt32 (-1, 3))
+        printfn ""
+        printfn "%A " (x.RndInt64 (System.Int64.MinValue, System.Int64.MaxValue))
+        printfn "%A " (x.RndInt64 (1L, 5L))
+        printfn "%A " (x.RndInt64 (-1L, 3L))
+        printfn ""
+        printfn ""
+        printfn "%A %s " (x.RndSByteSeq (System.SByte.MinValue, System.SByte.MaxValue, 4)) "RndSByte  4"
+        printfn "%A " (x.RndSByteSeq (1y, 5y, 4))
+        printfn "%A " (x.RndSByteSeq (-1y, 3y, 4))
+        printfn ""
+        printfn "%A %s " (x.RndInt16Seq (System.Int16.MinValue, System.Int16.MaxValue, 4)) "RndInt16  4"
+        printfn "%A " (x.RndInt16Seq (1s, 5s, 4))
+        printfn "%A " (x.RndInt16Seq (-1s, 3s, 4))
+        printfn ""
+        printfn "%A %s " (x.RndInt32Seq (System.Int32.MinValue, System.Int32.MaxValue, 4)) "RndInt32  4"
+        printfn "%A " (x.RndInt32Seq (1, 5, 4))
+        printfn "%A " (x.RndInt32Seq (-1, 3, 4))
+        printfn ""
+        printfn "%A %s " (x.RndInt64Seq (System.Int64.MinValue, System.Int64.MaxValue, 4))  "RndInt64  4"
+        printfn "%A " (x.RndInt64Seq (1L, 5L, 4))
+        printfn "%A " (x.RndInt64Seq (-1L, 3L, 4))
+        printfn ""
+        printfn ""
+        printfn "%A %s " (x.RndSByteUniqueSeq (System.SByte.MinValue, System.SByte.MaxValue, 4)) "RndByte  4"
+        printfn "%A " (x.RndSByteUniqueSeq (1y, 5y, 4))
+        printfn "%A " (x.RndSByteUniqueSeq (-1y, 3y, 4))
+        printfn ""
+        printfn "%A %s " (x.RndInt16UniqueSeq (System.Int16.MinValue, System.Int16.MaxValue, 4)) "RndUint16  4"
+        printfn "%A " (x.RndInt16UniqueSeq (1s, 5s, 4))
+        printfn "%A " (x.RndInt16UniqueSeq (-1s, 3s, 4))
+        printfn ""
+        printfn "%A %s " (x.RndInt32UniqueSeq (System.Int32.MinValue, System.Int32.MaxValue, 4)) "RndInt32  4"
+        printfn "%A " (x.RndInt32UniqueSeq (1, 5, 4))
+        printfn "%A " (x.RndInt32UniqueSeq (-1, 3, 4))
+       
+//        printfn "%A" (x.RndSByte (-128y, 127y))
+//        printfn "%A" (x.RndSByte (-128y, 127y))
+//        printfn "%A" (x.RndSByte (-128y, 127y))
+//        printfn "%A" (x.RndSByte (-128y, 127y))
+//        printfn "%A" (x.RndSByte (-128y, 127y))
+//        printfn "%A" (x.RndSByte (-128y, 127y))
+//        printfn "%A" (x.RndSByte (-128y, 127y))
+//        printfn "%A" (x.RndSByte (-128y, 127y))
+//        printfn "%A" (x.RndSByte (-128y, 127y))
+//        printfn "%A" (x.RndSByte (-128y, 127y))
+//        printfn "%A" (x.RndSByte (-128y, 127y))
+//        printfn ""  
+//        printfn "%A %s" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue)) "RndUint32  "
+//        printfn "%A" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue))
+//        printfn "%A" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue))
+//        printfn "%A" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue))
+//        printfn "%A" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue))
+//        printfn "%A" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue))
+//        printfn "%A" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue))
+//        printfn "%A" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue))
+//        printfn "%A" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue))
+//        printfn "%A" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue))
+//        printfn "%A" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue))
+//        printfn "%A" (x.RndUint32 (System.UInt32.MinValue, System.UInt32.MaxValue))
+//        printfn ""
 //
-//        let seq3 = x.RndUbyteSeq 63
-//        printfn "%A %s" seq3 "rndUbyteSeq"
-//        printfn "%A" (Seq.length seq3)
-//        let seq4 = x.RndUbyteSeq 64
-//        printfn "%A %s" seq4 "rndUbyteSeq"
-//        printfn "%A" (Seq.length seq4)
-//        let seq5 = x.RndUbyteSeq 65
-//        printfn "%A %s" seq5 "rndUbyteSeq"
-//        printfn "%A" (Seq.length seq5)
-//
-//        let seq1 = x.RndUbyteSeq 84
-//        printfn "%A %s" seq1 "rndUbyteSeq"
-//        printfn "%A" (Seq.length seq1) 
-//
-//
-//        let seq2 = x.RndByteSeq 3
-//        printfn "%A %s" seq2 "rndByteSeq"
-//        printfn "%A" (Seq.length seq2)
+//        printfn "%A %s" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue) ) "RndInt32  "
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+//        printfn "%A" (x.RndInt32 (System.Int32.MinValue, System.Int32.MaxValue))
+
+//        let seq2 = x.RndInt64Seq 4
+//        printfn "%A %s" seq2 "RndInt64Seq"
+//        printfn ""
+//        let seq2 = x.RndUint64Seq 4
+//        printfn "%A %s" seq2 "RndUint64Seq"
+//        printfn ""
 //
 //        let seq3 = x.RndByteSeq 63
-//        printfn "%A %s" seq3 "rndByteSeq"
+//        printfn "%A %s" seq3 "RndByteSeq"
 //        printfn "%A" (Seq.length seq3)
 //        let seq4 = x.RndByteSeq 64
-//        printfn "%A %s" seq4 "rndByteSeq"
+//        printfn "%A %s" seq4 "RndByteSeq"
 //        printfn "%A" (Seq.length seq4)
 //        let seq5 = x.RndByteSeq 65
-//        printfn "%A %s" seq5 "rndByteSeq"
+//        printfn "%A %s" seq5 "RndByteSeq"
 //        printfn "%A" (Seq.length seq5)
 //
 //        let seq1 = x.RndByteSeq 84
-//        printfn "%A %s" seq1 "rndByteSeq"
+//        printfn "%A %s" seq1 "RndByteSeq"
+//        printfn "%A" (Seq.length seq1) 
+//
+//
+//        let seq2 = x.RndSByteSeq 3
+//        printfn "%A %s" seq2 "RndSByteSeq"
+//        printfn "%A" (Seq.length seq2)
+//
+//        let seq3 = x.RndSByteSeq 63
+//        printfn "%A %s" seq3 "RndSByteSeq"
+//        printfn "%A" (Seq.length seq3)
+//        let seq4 = x.RndSByteSeq 64
+//        printfn "%A %s" seq4 "RndSByteSeq"
+//        printfn "%A" (Seq.length seq4)
+//        let seq5 = x.RndSByteSeq 65
+//        printfn "%A %s" seq5 "RndSByteSeq"
+//        printfn "%A" (Seq.length seq5)
+//
+//        let seq1 = x.RndSByteSeq 84
+//        printfn "%A %s" seq1 "RndSByteSeq"
 //        printfn "%A" (Seq.length seq1)
 
-//        printfn "%A %s" (x.RndUbyte()) "rndUbyte"
-//        printfn "%A" (x.RndUbyte())
-//        printfn "%A" (x.RndUbyte())
-//        printfn "%A" (x.RndUbyte())
-//        printfn "%A" (x.RndUbyte())
-//        printfn "%A" (x.RndUbyte())
+//        printfn "%A %s" (x.RndByte()) "RndByte"
+//        printfn "%A" (x.RndByte())
+//        printfn "%A" (x.RndByte())
+//        printfn "%A" (x.RndByte())
+//        printfn "%A" (x.RndByte())
+//        printfn "%A" (x.RndByte())
 //        printfn ""
-//        printfn "%A %s" (x.RndByte()) "rndByte"
-//        printfn "%A" (x.RndByte())
-//        printfn "%A" (x.RndByte())
-//        printfn "%A" (x.RndByte())
-//        printfn "%A" (x.RndByte())
-//        printfn "%A" (x.RndByte())
+//        printfn "%A %s" (x.RndSByte()) "RndSByte"
+//        printfn "%A" (x.RndSByte())
+//        printfn "%A" (x.RndSByte())
+//        printfn "%A" (x.RndSByte())
+//        printfn "%A" (x.RndSByte())
+//        printfn "%A" (x.RndSByte())
 //        printfn ""
 
         
 
 
-//        printfn "%A %s" (x.RndUint16()) "rndUint16"
-//        printfn "%A" (x.RndUint16())
-//        printfn "%A" (x.RndUint16())
-//        printfn "%A" (x.RndUint16())
-//        printfn "%A" (x.RndUint16())
-//        printfn "%A" (x.RndUint16())
+//        printfn "%A %s" (x.RndUint32()) "rndUint32"
+//        printfn "%A" (x.RndUint32())
+//        printfn "%A" (x.RndUint32())
+//        printfn "%A" (x.RndUint32())
+//        printfn "%A" (x.RndUint32())
+//        printfn "%A" (x.RndUint32())
 //        printfn ""
-//        printfn "%A %s" (x.RndInt16()) "rndInt16"
-//        printfn "%A" (x.RndInt16())
-//        printfn "%A" (x.RndInt16())
-//        printfn "%A" (x.RndInt16())
-//        printfn "%A" (x.RndInt16())
-//        printfn "%A" (x.RndInt16())
+//        printfn "%A %s" (x.RndInt32()) "rndInt32"
+//        printfn "%A" (x.RndInt32())
+//        printfn "%A" (x.RndInt32())
+//        printfn "%A" (x.RndInt32())
+//        printfn "%A" (x.RndInt32())
+//        printfn "%A" (x.RndInt32())
 //        printfn ""
 //        printfn "%A %s" (x.RndUint32()) "rndUint32"
 //        printfn "%A" (x.RndUint32())
